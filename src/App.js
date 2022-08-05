@@ -13,7 +13,7 @@ import { auth } from './firebase-config';
   const [isAuth,setIsAuth]=useState( localStorage.getItem("isAuth"));
 
    const signedOut=()=>{
-    signOut(auth ).then( ()=>{
+    signOut(auth ).then( ()=>{   
       localStorage.clear()
       setIsAuth(false);
  window.location.pathname="/login"    ;
