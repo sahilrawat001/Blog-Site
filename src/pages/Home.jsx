@@ -3,18 +3,17 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import {getDocs,collection, deleteDoc ,doc } from  "firebase/firestore"
 import {db,auth } from '../firebase-config'
-import { async } from '@firebase/util';
-
+ 
 const Home = ( isAuth) => {
   const [posts,setPosts]=useState([]);
-  const postsCollectionRef=collection(db ,'posts');
+  const postsCollectionRef=collection(db ,"posts");
   const deletePost=async( id)=>{
     const postDOc=doc(db , "posts" , id  )
     await deleteDoc( postDOc );
   }
   useEffect( ()=>{
     const getPosts=async ()=>{
-      const data =await getDocs( postsCollectionRef );
+      const data =await getDocs(postsCollectionRef );
       setPosts( data.docs.map( (doc) => ( { ...doc.data(),id :doc.id  } )  ) );
      };
 
